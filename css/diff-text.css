@@ -1,0 +1,83 @@
+/*
+ * Copyright (c) 2020-2021 Valère Monseur
+ * Licensed under the terms of the MIT license - http://opensource.org/licenses/MIT
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+
+body {
+  max-width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+table {
+  width: 100%;
+  margin: 0px;
+  padding: 7px 7px 5px 7px;
+}
+
+.tdvariable {
+  width: 50%;
+  margin: 0px;
+  padding: 0px;
+}
+
+.tdfixed {
+  min-width: 7px;
+  max-width: 7px;
+  margin: 0px;
+  padding: 0px;
+}
+
+textarea {
+  color: #444;
+  font-family: "Roboto Mono", monospace;
+  font-size: 13px;
+
+  width: 100%;
+  height: 25vh;
+  resize: none;
+  overflow: auto;
+  margin: 0px;
+  padding: 0px;
+}
+
+div {
+  color: #444;
+  font-family: "Roboto Mono", monospace;
+  font-size: 13px;
+
+  white-space: pre;
+  margin: 0px 5px 10px 10px;
+}
+
+ins.char {
+  background: #cdffd8;
+  color: #22863a;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+del.char {
+  background: #ffdce0;
+  color: #b31d28;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+ins.line {
+  display: block;
+  background: #cdffd8;
+  color: #22863a;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+del.line {
+  display: block;
+  background: #ffdce0;
+  color: #b31d28;
+  font-weight: bold;
+  text-decoration: none;
+}

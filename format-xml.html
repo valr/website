@@ -1,0 +1,72 @@
+<!--
+  Copyright (c) 2020-2021 Valère Monseur
+  Licensed under the terms of the MIT license - http://opensource.org/licenses/MIT
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Format XML</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="css/format-xml.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/formatXML.js"></script>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>
+          <textarea id="text1" wrap="off" autofocus></textarea>
+        </td>
+      </tr>
+    </table>
+    <div id="text2" ondblclick="switch_color_mode()"></div>
+
+    <script>
+      var mode = "formatted-color";
+      var text1 = document.getElementById("text1");
+      var text2 = document.getElementById("text2");
+
+      text1.onkeyup = text1.onpaste = text1.onchange = xml_format;
+
+      function xml_format() {
+        xml_raw = text1.value.replace(/>[\s\r\n]+</gm, "><").trim();
+
+        if (mode.startsWith("formatted-") === true) {
+          xml_formatted = formatXML(xml_raw);
+          xml_escaped =
+            xml_formatted.replace(/&/g, "&amp;").replace(/</g, "&lt;")
+                         .replace(/>/g, "&gt;").replace(/ /g, "&nbsp;")
+                         .replace(/\r\n/g, "<br />");
+
+          if (mode === "formatted-color") {
+            text2.innerHTML =
+              xml_escaped.replace(/&lt;/g, "<span class='tag'>&lt;</span><span class='tagname'>")
+                         .replace(/&gt;/g, "</span><span class='tag'>&gt;</span>");
+          } else {
+            text2.innerHTML = xml_escaped;
+          }
+        } else {
+          text2.innerHTML =
+            xml_raw.replace(/&/g, "&amp;").replace(/</g, "&lt;")
+                   .replace(/>/g, "&gt;").replace(/ /g, "&nbsp;");
+        }
+      }
+
+      function switch_color_mode() {
+        if (mode === "formatted-color") {
+          mode = "formatted-black";
+        } else if (mode === "formatted-black") {
+          mode = "not-formatted";
+        } else {
+          mode = "formatted-color";
+        }
+
+        text1.onchange();
+      }
+    </script>
+  </body>
+</html>

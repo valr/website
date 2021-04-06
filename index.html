@@ -1,0 +1,65 @@
+<!--
+  Copyright (c) 2020-2021 Valère Monseur
+  Licensed under the terms of the MIT license - http://opensource.org/licenses/MIT
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Death, be not proud</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+  </head>
+  <body>
+    <h1>Death, be not proud</h1>
+    <aside>by John Donne</aside>
+
+    <p>
+      Death, be not proud, though some have called thee<br />
+      Mighty and dreadful, for thou art not so;<br />
+      For those whom thou think'st thou dost overthrow<br />
+      Die not, poor Death, nor yet canst thou kill me.<br />
+      From rest and sleep, which but thy pictures be,<br />
+      Much pleasure; then from thee much more must flow,<br />
+      And soonest our best men with thee do go,<br />
+      Rest of their bones, and soul's delivery.<br />
+      Thou art slave to fate, chance, kings, and desperate men,<br />
+      And dost with poison, war, and sickness dwell,<br />
+      And poppy or charms can make us sleep as well<br />
+      And better than thy stroke; why swell'st thou then?<br />
+      One short sleep past, we wake eternally<br />
+      And death shall be no more; Death, thou shalt die.<br />
+    </p>
+
+    <h1>Source</h1>
+    <ul>
+      <li><a href="https://github.com/valr">GitHub</a></li>
+    </ul>
+
+    <h1>Tools</h1>
+    <ul>
+      <li><a href="current-time.html">Current Time</a></li>
+      <li><a href="diff-text.html">Diff Text</a></li>
+      <li><a href="format-xml.html">Format XML</a></li>
+      <li><a href="ip">IP:Port</a></li>
+      <li>
+        <form onsubmit="render_url()">
+          Rendertron URL: <input type="text" id="url" /><br />
+          <input type="submit" value="Submit" />
+          <input type="reset" value="Clear" />
+        </form>
+      </li>
+    </ul>
+
+    <script>
+      function render_url() {
+        var url = encodeURIComponent(document.getElementById("url").value);
+        var win = window.open("https://render-tron.appspot.com/screenshot/" + url);
+        win.focus();
+      }
+    </script>
+  </body>
+</html>

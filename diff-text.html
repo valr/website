@@ -1,0 +1,94 @@
+<!--
+  Copyright (c) 2020-2021 Valère Monseur
+  Licensed under the terms of the MIT license - http://opensource.org/licenses/MIT
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Diff Text</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="css/diff-text.css" />
+    <script src="js/diff_match_patch_uncompressed.js"></script>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td class="tdvariable"><textarea id="text1" wrap="off" autofocus></textarea></td>
+        <td class="tdfixed" ondblclick="swap_text_content()"></td>
+        <td class="tdvariable"><textarea id="text2" wrap="off"></textarea></td>
+      </tr>
+    </table>
+    <div id="text3" ondblclick="switch_diff_mode()"></div>
+
+    <script>
+      var mode = "line";
+      var text1 = document.getElementById("text1");
+      var text2 = document.getElementById("text2");
+      var text3 = document.getElementById("text3");
+
+      var diff_process = new diff_match_patch();
+      diff_process.Diff_Timeout = 0; // no timeout
+
+      switch_diff_mode();
+
+      function diff_char() {
+        var diff_result = diff_process.diff_main(text1.value, text2.value);
+        diff_process.diff_cleanupSemantic(diff_result);
+        text3.innerHTML = diff_html(diff_result, "&para;<br>", "&para;<br>", "<br>");
+      }
+
+      function diff_line() {
+        // line mode requires complete lines
+        diff_text1 = text1.value + (text1.value.endsWith("\n") ? "" : "\n");
+        diff_text2 = text2.value + (text2.value.endsWith("\n") ? "" : "\n");
+
+        var diff_ln2chr = diff_process.diff_linesToChars_(diff_text1, diff_text2);
+        var diff_result = diff_process.diff_main(diff_ln2chr.chars1, diff_ln2chr.chars2, false);
+        diff_process.diff_charsToLines_(diff_result, diff_ln2chr.lineArray);
+        // diff_process.diff_cleanupSemantic(diff_result); // this seems to break the line diff result
+
+        text3.innerHTML = diff_html(diff_result, "<br>", "<br>", "<br>");
+      }
+
+      function diff_html(diffs, ins_eol, del_eol, equ_eol) {
+        var html = [];
+        for (var x = 0; x < diffs.length; x++) {
+          var oper = diffs[x][0]; // operation: insert, delete, equal
+          var data = diffs[x][1]; // text of change
+          var text = data.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+          switch (oper) {
+            case DIFF_INSERT:
+              html[x] = '<ins class="' + mode + '">' + text.replace(/\n/g, ins_eol) + "</ins>";
+              break;
+            case DIFF_DELETE:
+              html[x] = '<del class="' + mode + '">' + text.replace(/\n/g, del_eol) + "</del>";
+              break;
+            case DIFF_EQUAL:
+              html[x] = "<span>" + text.replace(/\n/g, equ_eol) + "</span>";
+              break;
+          }
+        }
+        return html.join("");
+      }
+
+      function swap_text_content() {
+        var tmp = text1.value;
+        text1.value = text2.value;
+        text2.value = tmp;
+        text2.onchange();
+      }
+
+      function switch_diff_mode() {
+        mode = mode === "line" ? "char" : "line";
+        text1.onkeyup = text2.onkeyup =
+        text1.onpaste = text2.onpaste =
+        text1.onchange = text2.onchange = mode === "line" ? diff_line : diff_char;
+        text2.onchange();
+      }
+    </script>
+  </body>
+</html>

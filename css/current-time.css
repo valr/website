@@ -1,0 +1,16 @@
+/*
+ * Copyright (c) 2020-2021 Valère Monseur
+ * Licensed under the terms of the MIT license - http://opensource.org/licenses/MIT
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+
+body {
+  color: #444;
+  font-family: "Roboto Mono", monospace;
+  font-size: 13px;
+
+  max-width: 100%;
+  margin: 5px;
+  padding: 0px;
+}

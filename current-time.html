@@ -1,0 +1,32 @@
+<!--
+  Copyright (c) 2020-2021 Valère Monseur
+  Licensed under the terms of the MIT license - http://opensource.org/licenses/MIT
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Current Time</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="css/current-time.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data.min.js"></script>
+  </head>
+  <body>
+    <script>
+      now = moment();
+
+      now_brussels = moment.tz(now, "Europe/Brussels").format();
+      now_london = moment.tz(now, "Europe/London").format();
+      now_utc = moment.tz(now, "UTC").format();
+
+      document.body.innerHTML =
+        "Europe/Brussels: " + now_brussels + "<br>" +
+        "Europe/London: " + now_london + "<br>" +
+        "UTC: " + now_utc;
+    </script>
+  </body>
+</html>
