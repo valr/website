@@ -19,7 +19,7 @@ body {
 .image-sphere .sphere img {
   border-radius: 100px;
   -moz-border-radius: 100px;
-  -webkit-border-  radius: 100px;
+  -webkit-border-radius: 100px;
   display: block;
   margin: 0;
 }
