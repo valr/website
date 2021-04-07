@@ -15,6 +15,20 @@ body {
   padding: 0 10px;
 }
 
+.image-sphere .sphere,
+.image-sphere .sphere img {
+  border-radius: 100px;
+  -moz-border-radius: 100px;
+  -webkit-border-  radius: 100px;
+  display: block;
+  margin: 0;
+}
+
+.image-sphere .sphere {
+  border: 1px solid #b9b9b9;
+  width: 128px;
+}
+
 h1,
 h2,
 h3 {
@@ -30,14 +44,14 @@ ul {
 }
 
 ul li:before {
-  content: "☆";
+  content: "▹";
   line-height: 1.8;
   position: absolute;
   left: 0;
 }
 
 ul li:hover:before {
-  content: "★";
+  content: "▸";
   line-height: 1.8;
   position: absolute;
   left: 0;
