@@ -20,13 +20,15 @@
       now = moment();
 
       now_brussels = moment.tz(now, "Europe/Brussels").format();
+      now_paris = moment.tz(now, "Europe/Paris").format();
       now_london = moment.tz(now, "Europe/London").format();
       now_utc = moment.tz(now, "UTC").format();
 
       document.body.innerHTML =
-        "Europe/Brussels: " + now_brussels + "<br>" +
-        "Europe/London: " + now_london + "<br>" +
-        "UTC: " + now_utc;
+        "UTC             : " + now_utc + "<br>" +
+        "Europe/London   : " + now_london + "<br>" +
+        "Europe/Paris    : " + now_paris  + "<br>" +
+        "Europe/Brussels : " + now_brussels;
     </script>
   </body>
 </html>
