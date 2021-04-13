@@ -17,18 +17,23 @@
   </head>
   <body>
     <script>
-      now = moment();
+      urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.has("time") === true) {
+        time = moment(urlParams.get("time"), moment.ISO_8601);
+      } else {
+        time = moment();
+      }
 
-      now_brussels = moment.tz(now, "Europe/Brussels").format();
-      now_paris = moment.tz(now, "Europe/Paris").format();
-      now_london = moment.tz(now, "Europe/London").format();
-      now_utc = moment.tz(now, "UTC").format();
+      timeUTC = moment.tz(time, "UTC").format();
+      timeLondon = moment.tz(time, "Europe/London").format();
+      timeParis = moment.tz(time, "Europe/Paris").format();
+      timeBrussels = moment.tz(time, "Europe/Brussels").format();
 
       document.body.innerHTML =
-        "UTC             : " + now_utc + "<br>" +
-        "Europe/London   : " + now_london + "<br>" +
-        "Europe/Paris    : " + now_paris  + "<br>" +
-        "Europe/Brussels : " + now_brussels;
+        "UTC             : " + timeUTC    + "<br>" +
+        "Europe/London   : " + timeLondon + "<br>" +
+        "Europe/Paris    : " + timeParis  + "<br>" +
+        "Europe/Brussels : " + timeBrussels;
     </script>
   </body>
 </html>
