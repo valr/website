@@ -44,14 +44,14 @@ ul {
 }
 
 ul li:before {
-  content: "▹";
+  content: "▸";
   line-height: 1.8;
   position: absolute;
   left: 0;
 }
 
 ul li:hover:before {
-  content: "▸";
+  content: "▹";
   line-height: 1.8;
   position: absolute;
   left: 0;
