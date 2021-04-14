@@ -21,12 +21,15 @@ body {
   -moz-border-radius: 100px;
   -webkit-border-radius: 100px;
   display: block;
-  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .image-sphere .sphere {
   border: 1px solid #b9b9b9;
   width: 128px;
+  margin-top: 64px;
+  margin-bottom: 64px;
 }
 
 h1,
@@ -35,26 +38,34 @@ h3 {
   line-height: 1.2;
 }
 
-ul {
-  list-style: none;
-  line-height: 1.8;
+h1 {
+  overflow: hidden;
+  text-align: center;
+}
+
+h1:before,
+h1:after {
+  background-color: #b9b9b9;
+  content: "";
+  display: inline-block;
+  height: 1px;
   position: relative;
-  margin-left: 0;
-  padding-left: 1.2em;
+  vertical-align: middle;
+  width: 50%;
 }
 
-ul li:before {
-  content: "▸";
-  line-height: 1.8;
-  position: absolute;
-  left: 0;
+h1:before {
+  right: 0.5em;
+  margin-left: -50%;
 }
 
-ul li:hover:before {
-  content: "▹";
-  line-height: 1.8;
-  position: absolute;
-  left: 0;
+h1:after {
+  left: 0.5em;
+  margin-right: -50%;
+}
+
+.divtools {
+  line-height: 2.2;
 }
 
 a:active,

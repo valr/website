@@ -12,17 +12,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   </head>
   <body>
     <div class="image-sphere">
       <div class="sphere">
-        <img src="img/valr-128x128.png">
+        <img src="img/valr-128x128.png" />
       </div>
     </div>
 
     <h1>Death, be not proud</h1>
     <aside>by John Donne</aside>
-
     <p>
       Death, be not proud, though some have called thee<br />
       Mighty and dreadful, for thou art not so;<br />
@@ -40,25 +40,19 @@
       And death shall be no more; Death, thou shalt die.<br />
     </p>
 
-    <h1>Source</h1>
-    <ul>
-      <li><a href="https://github.com/valr">GitHub</a></li>
-    </ul>
-
-    <h1>Tools</h1>
-    <ul>
-      <li><a href="current-time.html">Current Time</a></li>
-      <li><a href="diff-text.html">Diff Text</a></li>
-      <li><a href="format-xml.html">Format XML</a></li>
-      <li><a href="ip">IP:Port</a></li>
-      <li>
-        <form onsubmit="render_url()">
-          Rendertron URL: <input type="text" id="url" /><br />
-          <input type="submit" value="Submit" />
-          <input type="reset" value="Clear" />
-        </form>
-      </li>
-    </ul>
+    <h1>Source & Tools</h1>
+    <div class="divtools">
+      <i class="fab fa-github fa-fw"></i>&nbsp&nbsp<a href="https://github.com/valr">GitHub</a><br />
+      <i class="fas fa-clock fa-fw"></i>&nbsp&nbsp<a href="current-time.html">Current Time</a><br />
+      <i class="fas fa-network-wired fa-fw"></i>&nbsp&nbsp<a href="ip">IP:Port</a><br />
+      <i class="fas fa-not-equal fa-fw"></i>&nbsp&nbsp<a href="diff-text.html">Diff Text</a><br />
+      <i class="fas fa-align-left fa-fw"></i>&nbsp&nbsp<a href="format-xml.html">Format XML</a><br />
+      <form onsubmit="render_url()">
+        <i class="fas fa-camera fa-fw"></i>&nbsp&nbspRendertron URL: <input type="text" id="url" />
+        <input type="submit" value="Submit" />
+        <input type="reset" value="Clear" /><br />
+      </form>
+    </div>
 
     <script>
       function render_url() {
