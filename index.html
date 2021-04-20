@@ -6,56 +6,57 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Death, be not proud</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <title>¯\_(ツ)_/¯</title>
   </head>
   <body>
-    <div class="image-sphere">
-      <div class="sphere">
+    <div class="img-sphere sphere">
+      <div class="img-sphere sphere">
         <img src="img/valr-128x128.png" />
       </div>
     </div>
 
-    <h1>Death, be not proud</h1>
-    <aside>by John Donne</aside>
-    <p>
-      Death, be not proud, though some have called thee<br />
-      Mighty and dreadful, for thou art not so;<br />
-      For those whom thou think'st thou dost overthrow<br />
-      Die not, poor Death, nor yet canst thou kill me.<br />
-      From rest and sleep, which but thy pictures be,<br />
-      Much pleasure; then from thee much more must flow,<br />
-      And soonest our best men with thee do go,<br />
-      Rest of their bones, and soul's delivery.<br />
-      Thou art slave to fate, chance, kings, and desperate men,<br />
-      And dost with poison, war, and sickness dwell,<br />
-      And poppy or charms can make us sleep as well<br />
-      And better than thy stroke; why swell'st thou then?<br />
-      One short sleep past, we wake eternally<br />
-      And death shall be no more; Death, thou shalt die.<br />
-    </p>
-
     <h1>Source & Tools</h1>
-    <div class="divtools">
-      <i class="fab fa-github fa-fw"></i>&nbsp&nbsp<a href="https://github.com/valr">GitHub</a><br />
-      <i class="fas fa-clock fa-fw"></i>&nbsp&nbsp<a href="current-time.html">Current Time</a><br />
-      <i class="fas fa-network-wired fa-fw"></i>&nbsp&nbsp<a href="ip">IP:Port</a><br />
-      <i class="fas fa-not-equal fa-fw"></i>&nbsp&nbsp<a href="diff-text.html">Diff Text</a><br />
-      <i class="fas fa-align-left fa-fw"></i>&nbsp&nbsp<a href="format-xml.html">Format XML</a><br />
-      <form onsubmit="render_url()">
-        <i class="fas fa-camera fa-fw"></i>&nbsp&nbspRendertron URL: <input type="text" id="url" />
-        <input type="submit" value="Submit" />
-        <input type="reset" value="Clear" /><br />
-      </form>
-    </div>
+    <table>
+      <tr>
+        <td><i class="fab fa-github fa-fw"></i></td>
+        <td><a href="https://github.com/valr">GitHub</a></td>
+      </tr>
+      <tr>
+        <td><i class="fas fa-clock fa-fw"></i></td>
+        <td><a href="current-time.html">Current time</a></td>
+      </tr>
+      <tr>
+        <td><i class="fas fa-network-wired fa-fw"></i></td>
+        <td><a href="ip">IP:port</a></td>
+      </tr>
+      <tr>
+        <td><i class="fas fa-not-equal fa-fw"></i></td>
+        <td><a href="diff-text.html">Diff text</a></td>
+      </tr>
+      <tr>
+        <td><i class="fas fa-align-left fa-fw"></i></td>
+        <td><a href="format-xml.html">Format XML</a></td>
+      </tr>
+      <tr>
+        <td><i class="fas fa-camera fa-fw"></i></td>
+        <td>
+          <form onsubmit="renderURL()">
+            Rendertron URL: <input type="text" id="url" />
+            <input type="submit" value="Submit" />
+          </form>
+        </td>
+      </tr>
+    </table>
 
     <script>
-      function render_url() {
+      function renderURL() {
         var url = encodeURIComponent(document.getElementById("url").value);
         var win = window.open("https://render-tron.appspot.com/screenshot/" + url);
         win.focus();

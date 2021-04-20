@@ -8,34 +8,30 @@
 body {
   color: #444;
   font-family: "Open Sans", sans-serif;
-  font-size: 18px;
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.5;
   max-width: 650px;
-  margin: 40px auto;
-  padding: 0 10px;
+  margin: 64px auto;
 }
 
-.image-sphere .sphere,
-.image-sphere .sphere img {
-  border-radius: 100px;
-  -moz-border-radius: 100px;
-  -webkit-border-radius: 100px;
+.img-sphere .sphere,
+.img-sphere .sphere img {
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-.image-sphere .sphere {
+.img-sphere .sphere {
   border: 1px solid #b9b9b9;
   width: 128px;
-  margin-top: 64px;
-  margin-bottom: 64px;
 }
 
-h1,
-h2,
-h3 {
+h1 {
   line-height: 1.2;
+  margin-top: 64px;
 }
 
 h1 {
@@ -47,11 +43,11 @@ h1:before,
 h1:after {
   background-color: #b9b9b9;
   content: "";
-  display: inline-block;
   height: 1px;
+  width: 50%;
+  display: inline-block;
   position: relative;
   vertical-align: middle;
-  width: 50%;
 }
 
 h1:before {
@@ -64,8 +60,13 @@ h1:after {
   margin-right: -50%;
 }
 
-.divtools {
-  line-height: 2.2;
+tr {
+  line-height: 32px;
+}
+
+td {
+  padding-left: 4px;
+  padding-right: 8px;
 }
 
 a:active,

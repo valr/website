@@ -6,20 +6,21 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Current Time</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="css/current-time.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data.min.js"></script>
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="css/current-time.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js" integrity="sha512-LGXaggshOkD/at6PFNcp2V2unf9LzFq6LE+sChH7ceMTDP0g2kn6Vxwgg7wkPP7AAtX+lmPqPdxB47A0Nz0cMQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data.min.js" integrity="sha512-rjmacQUGnwQ4OAAt3MoAmWDQIuswESNZwYcKC8nmdCIxAVkRC/Lk2ta2CWGgCZyS+FfBWPgaO01LvgwU/BX50Q==" crossorigin="anonymous"></script>
+    <title>Current time</title>
   </head>
   <body>
     <script>
-      urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.has("time") === true) {
-        time = moment(urlParams.get("time"), moment.ISO_8601);
+      URLParams = new URLSearchParams(window.location.search);
+      if (URLParams.has("time") === true) {
+        time = moment(URLParams.get("time"), moment.ISO_8601);
       } else {
         time = moment();
       }
@@ -30,9 +31,9 @@
       timeBrussels = moment.tz(time, "Europe/Brussels").format();
 
       document.body.innerHTML =
-        "UTC             : " + timeUTC    + "<br>" +
-        "Europe/London   : " + timeLondon + "<br>" +
-        "Europe/Paris    : " + timeParis  + "<br>" +
+        "UTC             : " + timeUTC    + "<br />" +
+        "Europe/London   : " + timeLondon + "<br />" +
+        "Europe/Paris    : " + timeParis  + "<br />" +
         "Europe/Brussels : " + timeBrussels;
     </script>
   </body>

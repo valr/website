@@ -1,5 +1,6 @@
 diff_match_patch:
+https://github.com/google/diff-match-patch
 https://raw.githubusercontent.com/google/diff-match-patch/master/javascript/diff_match_patch_uncompressed.js
 
-formatXML: (requires jQuery)
-https://raw.githubusercontent.com/sente/formatXML/master/formatXML.js
+formatXML:
+https://gist.github.com/sente/1083506/d2834134cd070dbcc08bf42ee27dabb746a1c54d

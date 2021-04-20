@@ -1,7 +1,37 @@
-/* 
- * Stuart Powers - http://github.com/sente/formatXML
- * You are free to use this code so long as you keep this attribution.
- */
+/*
+source: https://gist.github.com/sente/1083506/d2834134cd070dbcc08bf42ee27dabb746a1c54d
+note: this implementation is good enough for simple use, but not perfect nor complete
+interesting test case: https://bug226786.bmoattachments.org/attachment.cgi?id=136341
+*/
+
+function formatXML(xml) {
+    const padding = ' '.repeat(2); // set desired indent size here
+    const reg = /(>)(<)(\/*)/g;
+    let pad = 0;
+
+    xml = xml.replace(reg, '$1\r\n$2$3');
+    return xml.split('\r\n').map((node, index) => {
+        let indent = 0;
+
+        if (node.match(/.+<\/\w[^>]*>$/)) {
+            indent = 0;
+        } else if (node.match(/^<\/\w/) && pad > 0) {
+            pad -= 1;
+        } else if (node.match(/^<\w[^>]*[^\/]>.*$/)) {
+            indent = 1;
+        } else {
+            indent = 0;
+        }
+
+        pad += indent;
+
+        return padding.repeat(pad - indent) + node;
+    }).join('\r\n');
+}
+
+/*
+note: this old version requires JQuery
+
 function formatXML(xml) {
     var formatted = '';
     var reg = /(>)(<)(\/*)/g;
@@ -32,19 +62,4 @@ function formatXML(xml) {
 
     return formatted;
 }
-
-
-function test_formatXML() {
-    xml_raw = '<foo><bar><baz>blahblah</baz><baz>tralala</baz></bar></foo>';
-    xml_formatted = formatXML(xml_raw);
-    xml_escaped = xml_formatted.
-                    replace(/&/g,'&amp;').
-                    replace(/</g,'&lt;').
-                    replace(/>/g,'&gt;').
-                    replace(/ /g, '&nbsp;').
-                    replace(/\n/g,'<br />');
-    var mydiv = document.createElement('div');
-    mydiv.innerHTML = xml_escaped;
-    document.body.appendChild(mydiv);
-}
-
+*/
