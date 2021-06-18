@@ -5,36 +5,43 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="css/current-time.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js" integrity="sha512-LGXaggshOkD/at6PFNcp2V2unf9LzFq6LE+sChH7ceMTDP0g2kn6Vxwgg7wkPP7AAtX+lmPqPdxB47A0Nz0cMQ==" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data.min.js" integrity="sha512-rjmacQUGnwQ4OAAt3MoAmWDQIuswESNZwYcKC8nmdCIxAVkRC/Lk2ta2CWGgCZyS+FfBWPgaO01LvgwU/BX50Q==" crossorigin="anonymous"></script>
-    <title>Current time</title>
-  </head>
-  <body>
-    <script>
-      URLParams = new URLSearchParams(window.location.search);
-      if (URLParams.has("time") === true) {
-        time = moment(URLParams.get("time"), moment.ISO_8601);
-      } else {
-        time = moment();
-      }
 
-      timeUTC = moment.tz(time, "UTC").format();
-      timeLondon = moment.tz(time, "Europe/London").format();
-      timeParis = moment.tz(time, "Europe/Paris").format();
-      timeBrussels = moment.tz(time, "Europe/Brussels").format();
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono&amp;display=swap">
+  <link rel="stylesheet" href="css/current-time.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"
+    integrity="sha512-LGXaggshOkD/at6PFNcp2V2unf9LzFq6LE+sChH7ceMTDP0g2kn6Vxwgg7wkPP7AAtX+lmPqPdxB47A0Nz0cMQ=="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data.min.js"
+    integrity="sha512-rjmacQUGnwQ4OAAt3MoAmWDQIuswESNZwYcKC8nmdCIxAVkRC/Lk2ta2CWGgCZyS+FfBWPgaO01LvgwU/BX50Q=="
+    crossorigin="anonymous"></script>
+  <title>Current time</title>
+</head>
 
-      document.body.innerHTML =
-        "UTC             : " + timeUTC    + "<br />" +
-        "Europe/London   : " + timeLondon + "<br />" +
-        "Europe/Paris    : " + timeParis  + "<br />" +
-        "Europe/Brussels : " + timeBrussels;
-    </script>
-  </body>
+<body>
+  <script>
+    URLParams = new URLSearchParams(window.location.search);
+    if (URLParams.has("time") === true) {
+      time = moment(URLParams.get("time"), moment.ISO_8601);
+    } else {
+      time = moment();
+    }
+
+    timeUTC = moment.tz(time, "UTC").format();
+    timeLondon = moment.tz(time, "Europe/London").format();
+    timeParis = moment.tz(time, "Europe/Paris").format();
+    timeBrussels = moment.tz(time, "Europe/Brussels").format();
+
+    document.body.innerHTML =
+      "UTC             : " + timeUTC + "<br />" +
+      "Europe/London   : " + timeLondon + "<br />" +
+      "Europe/Paris    : " + timeParis + "<br />" +
+      "Europe/Brussels : " + timeBrussels;
+  </script>
+</body>
+
 </html>

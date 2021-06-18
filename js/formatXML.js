@@ -10,7 +10,7 @@ function formatXML(xml) {
     let pad = 0;
 
     xml = xml.replace(reg, '$1\r\n$2$3');
-    return xml.split('\r\n').map((node, index) => {
+    return xml.split('\r\n').map((node, _) => {
         let indent = 0;
 
         if (node.match(/.+<\/\w[^>]*>$/)) {
