@@ -5,72 +5,77 @@
 
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" href="/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono&amp;display=swap"
+    />
+    <link rel="stylesheet" href="css/format-xml.css" />
+    <script src="js/formatXML.js"></script>
+    <title>Format XML</title>
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <link rel="icon" href="/favicon.ico" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono&amp;display=swap">
-  <link rel="stylesheet" href="css/format-xml.css" />
-  <script src="js/formatXML.js"></script>
-  <title>Format XML</title>
-</head>
+  <body>
+    <textarea id="text1" wrap="off" autofocus></textarea>
+    <div id="text2" ondblclick="switchMode()"></div>
 
-<body>
-  <textarea id="text1" wrap="off" autofocus></textarea>
-  <div id="text2" ondblclick="switchMode()"></div>
+    <script>
+      var mode = "format,color";
+      var text1 = document.getElementById("text1");
+      var text2 = document.getElementById("text2");
 
-  <script>
-    var mode = "format,color";
-    var text1 = document.getElementById("text1");
-    var text2 = document.getElementById("text2");
+      text1.onkeyup = text1.onpaste = text1.onchange = FormatToXML;
 
-    text1.onkeyup = text1.onpaste = text1.onchange = FormatToXML;
+      function FormatToXML() {
+        /* XML = text1.value.replace(/(\r\n|\n|\r)/gm, " ").replace(/>\s+</g, "><").trim(); */
+        XML = text1.value.replace(/>[\s\r\n]+</gm, "><").trim();
 
-    function FormatToXML() {
-      /* XML = text1.value.replace(/(\r\n|\n|\r)/gm, " ").replace(/>\s+</g, "><").trim(); */
-      XML = text1.value.replace(/>[\s\r\n]+</gm, "><").trim();
+        if (mode.includes("format")) {
+          XML = formatXML(XML)
+            .replace(/&/g, "&amp;")
+            .replace(/ /g, "&nbsp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/\r\n/g, "<br />");
+        } else {
+          XML = XML.replace(/&/g, "&amp;")
+            .replace(/ /g, "&nbsp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;");
+        }
 
-      if (mode.includes("format")) {
-        XML = formatXML(XML)
-          .replace(/&/g, "&amp;").replace(/ /g, "&nbsp;")
-          .replace(/</g, "&lt;").replace(/>/g, "&gt;")
-          .replace(/\r\n/g, "<br />");
-      } else {
-        XML = XML
-          .replace(/&/g, "&amp;").replace(/ /g, "&nbsp;")
-          .replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        if (mode.includes("color")) {
+          XML = XML.replace(
+            /&lt;/g,
+            "<span class='tag'>&lt;</span><span class='tagname'>"
+          ).replace(/&gt;/g, "</span><span class='tag'>&gt;</span>");
+        }
+
+        text2.innerHTML = XML;
       }
 
-      if (mode.includes("color")) {
-        XML = XML
-          .replace(/&lt;/g, "<span class='tag'>&lt;</span><span class='tagname'>")
-          .replace(/&gt;/g, "</span><span class='tag'>&gt;</span>");
+      function switchMode() {
+        switch (mode) {
+          case "format,color":
+            mode = "format";
+            break;
+          case "format":
+            mode = "color";
+            break;
+          case "color":
+            mode = "none";
+            break;
+          case "none":
+            mode = "format,color";
+            break;
+        }
+
+        text1.onchange();
       }
-
-      text2.innerHTML = XML;
-    }
-
-    function switchMode() {
-      switch (mode) {
-        case "format,color":
-          mode = "format";
-          break;
-        case "format":
-          mode = "color";
-          break;
-        case "color":
-          mode = "none";
-          break;
-        case "none":
-          mode = "format,color";
-          break;
-      }
-
-      text1.onchange();
-    }
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>
