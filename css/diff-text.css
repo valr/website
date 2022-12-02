@@ -4,76 +4,76 @@
  */
 
 body {
-  color: #444;
-  font-family: "Roboto Mono", monospace;
-  font-size: 13px;
-  margin-right: 13px;
-  max-width: 100%;
+    color: #444;
+    font-family: "Roboto Mono", monospace;
+    font-size: 13px;
+    margin-right: 13px;
+    max-width: 100%;
 }
 
 table {
-  margin: 0;
-  padding: 0;
-  width: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 
 .tdvariable {
-  margin: 0;
-  padding: 0;
-  width: 50%;
+    margin: 0;
+    padding: 0;
+    width: 50%;
 }
 
 .tdfixed {
-  margin: 0;
-  max-width: 13px;
-  min-width: 13px;
-  padding: 0;
+    margin: 0;
+    max-width: 13px;
+    min-width: 13px;
+    padding: 0;
 }
 
 textarea {
-  color: #444;
-  font-family: "Roboto Mono", monospace;
-  font-size: 13px;
-  height: 25vh;
-  overflow: auto;
-  resize: none;
-  width: 100%;
+    color: #444;
+    font-family: "Roboto Mono", monospace;
+    font-size: 13px;
+    height: 25vh;
+    overflow: auto;
+    resize: none;
+    width: 100%;
 }
 
 div {
-  color: #444;
-  font-family: "Roboto Mono", monospace;
-  font-size: 13px;
-  margin-top: 5px;
-  white-space: pre;
+    color: #444;
+    font-family: "Roboto Mono", monospace;
+    font-size: 13px;
+    margin-top: 5px;
+    white-space: pre;
 }
 
 ins.char {
-  background: #cdffd8;
-  color: #22863a;
-  font-weight: bold;
-  text-decoration: none;
+    background: #cdffd8;
+    color: #22863a;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 del.char {
-  background: #ffdce0;
-  color: #b31d28;
-  font-weight: bold;
-  text-decoration: none;
+    background: #ffdce0;
+    color: #b31d28;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 ins.line {
-  background: #cdffd8;
-  color: #22863a;
-  display: block;
-  font-weight: bold;
-  text-decoration: none;
+    background: #cdffd8;
+    color: #22863a;
+    display: block;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 del.line {
-  background: #ffdce0;
-  color: #b31d28;
-  display: block;
-  font-weight: bold;
-  text-decoration: none;
+    background: #ffdce0;
+    color: #b31d28;
+    display: block;
+    font-weight: bold;
+    text-decoration: none;
 }

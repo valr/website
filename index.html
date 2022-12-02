@@ -5,71 +5,73 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="icon" href="/favicon.ico" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Open+Sans&amp;display=swap"
-    />
-    <link rel="stylesheet" href="css/index.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-      crossorigin="anonymous"
-    />
-    <title>¯\_(ツ)_/¯</title>
-  </head>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link rel="icon" href="/favicon.ico" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Open+Sans&amp;display=swap"
+        />
+        <link rel="stylesheet" href="css/index.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+            integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+            crossorigin="anonymous"
+        />
+        <title>¯\_(ツ)_/¯</title>
+    </head>
 
-  <body>
-    <div class="img-sphere sphere">
-      <div class="img-sphere sphere">
-        <img src="img/valr-128x128.png" />
-      </div>
-    </div>
+    <body>
+        <div class="img-sphere sphere">
+            <div class="img-sphere sphere">
+                <img src="img/valr-128x128.png" />
+            </div>
+        </div>
 
-    <h1>Source & Tools</h1>
-    <table>
-      <tr>
-        <td><i class="fab fa-github fa-fw"></i></td>
-        <td><a href="https://github.com/valr">GitHub</a></td>
-      </tr>
-      <tr>
-        <td><i class="fas fa-clock fa-fw"></i></td>
-        <td><a href="current-time.html">Current time</a></td>
-      </tr>
-      <tr>
-        <td><i class="fas fa-network-wired fa-fw"></i></td>
-        <td><a href="ip">IP:port</a></td>
-      </tr>
-      <tr>
-        <td><i class="fas fa-not-equal fa-fw"></i></td>
-        <td><a href="diff-text.html">Diff text</a></td>
-      </tr>
-      <tr>
-        <td><i class="fas fa-align-left fa-fw"></i></td>
-        <td><a href="format-xml.html">Format XML</a></td>
-      </tr>
-      <tr>
-        <td><i class="fas fa-camera fa-fw"></i></td>
-        <td>
-          <form onsubmit="renderURL()">
-            Rendertron URL: <input type="text" id="url" />
-            <input type="submit" value="Submit" />
-          </form>
-        </td>
-      </tr>
-    </table>
+        <h1>Source & Tools</h1>
+        <table>
+            <tr>
+                <td><i class="fab fa-github fa-fw"></i></td>
+                <td><a href="https://github.com/valr">GitHub</a></td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-clock fa-fw"></i></td>
+                <td><a href="current-time.html">Current time</a></td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-network-wired fa-fw"></i></td>
+                <td><a href="ip">IP:port</a></td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-not-equal fa-fw"></i></td>
+                <td><a href="diff-text.html">Diff text</a></td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-align-left fa-fw"></i></td>
+                <td><a href="format-xml.html">Format XML</a></td>
+            </tr>
+            <tr>
+                <td><i class="fas fa-camera fa-fw"></i></td>
+                <td>
+                    <form onsubmit="renderURL()">
+                        Rendertron URL: <input type="text" id="url" />
+                        <input type="submit" value="Submit" />
+                    </form>
+                </td>
+            </tr>
+        </table>
 
-    <script>
-      function renderURL() {
-        var url = encodeURIComponent(document.getElementById("url").value);
-        var win = window.open("https://render-tron.appspot.com/screenshot/" + url);
-        win.focus();
-      }
-    </script>
-  </body>
+        <script>
+            function renderURL() {
+                var url = encodeURIComponent(document.getElementById("url").value);
+                var win = window.open(
+                    "https://render-tron.appspot.com/screenshot/" + url
+                );
+                win.focus();
+            }
+        </script>
+    </body>
 </html>

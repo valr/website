@@ -5,117 +5,126 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="icon" href="/favicon.ico" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Roboto+Mono&amp;display=swap"
-    />
-    <link rel="stylesheet" href="css/diff-text.css" />
-    <script src="js/diff_match_patch_uncompressed.js"></script>
-    <title>Diff text</title>
-  </head>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link rel="icon" href="/favicon.ico" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Roboto+Mono&amp;display=swap"
+        />
+        <link rel="stylesheet" href="css/diff-text.css" />
+        <script src="js/diff_match_patch_uncompressed.js"></script>
+        <title>Diff text</title>
+    </head>
 
-  <body>
-    <table>
-      <tr>
-        <td class="tdvariable">
-          <textarea id="text1" wrap="off" autofocus></textarea>
-        </td>
-        <td class="tdfixed" ondblclick="swapText()"></td>
-        <td class="tdvariable"><textarea id="text2" wrap="off"></textarea></td>
-      </tr>
-    </table>
-    <div id="text3" ondblclick="switchMode()"></div>
+    <body>
+        <table>
+            <tr>
+                <td class="tdvariable">
+                    <textarea id="text1" wrap="off" autofocus></textarea>
+                </td>
+                <td class="tdfixed" ondblclick="swapText()"></td>
+                <td class="tdvariable"><textarea id="text2" wrap="off"></textarea></td>
+            </tr>
+        </table>
+        <div id="text3" ondblclick="switchMode()"></div>
 
-    <script>
-      var diffProcess = new diff_match_patch();
-      diffProcess.Diff_Timeout = 0; // no timeout
+        <script>
+            var diffProcess = new diff_match_patch();
+            diffProcess.Diff_Timeout = 0; // no timeout
 
-      var text1 = document.getElementById("text1");
-      var text2 = document.getElementById("text2");
-      var text3 = document.getElementById("text3");
+            var text1 = document.getElementById("text1");
+            var text2 = document.getElementById("text2");
+            var text3 = document.getElementById("text3");
 
-      var mode = "line";
-      switchMode();
+            var mode = "line";
+            switchMode();
 
-      function diffChar() {
-        var diffResult = diffProcess.diff_main(text1.value, text2.value);
-        diffProcess.diff_cleanupSemantic(diffResult);
-        text3.innerHTML = diffHTML(
-          diffResult,
-          "&para;<br />",
-          "&para;<br />",
-          "<br />"
-        );
-      }
+            function diffChar() {
+                var diffResult = diffProcess.diff_main(text1.value, text2.value);
+                diffProcess.diff_cleanupSemantic(diffResult);
+                text3.innerHTML = diffHTML(
+                    diffResult,
+                    "&para;<br />",
+                    "&para;<br />",
+                    "<br />"
+                );
+            }
 
-      function diffLine() {
-        // line mode requires complete lines
-        diffText1 = text1.value + (text1.value.endsWith("\n") ? "" : "\n");
-        diffText2 = text2.value + (text2.value.endsWith("\n") ? "" : "\n");
+            function diffLine() {
+                // line mode requires complete lines
+                diffText1 = text1.value + (text1.value.endsWith("\n") ? "" : "\n");
+                diffText2 = text2.value + (text2.value.endsWith("\n") ? "" : "\n");
 
-        var diffLn2Chr = diffProcess.diff_linesToChars_(diffText1, diffText2);
-        var diffResult = diffProcess.diff_main(
-          diffLn2Chr.chars1,
-          diffLn2Chr.chars2,
-          false
-        );
-        diffProcess.diff_charsToLines_(diffResult, diffLn2Chr.lineArray);
-        // diffProcess.diff_cleanupSemantic(diffResult); // this seems to break the line diff result
-        text3.innerHTML = diffHTML(diffResult, "<br />", "<br />", "<br />");
-      }
+                var diffLn2Chr = diffProcess.diff_linesToChars_(diffText1, diffText2);
+                var diffResult = diffProcess.diff_main(
+                    diffLn2Chr.chars1,
+                    diffLn2Chr.chars2,
+                    false
+                );
+                diffProcess.diff_charsToLines_(diffResult, diffLn2Chr.lineArray);
+                // diffProcess.diff_cleanupSemantic(diffResult); // this seems to break the line diff result
+                text3.innerHTML = diffHTML(diffResult, "<br />", "<br />", "<br />");
+            }
 
-      function diffHTML(diffText, insEOL, delEOL, equEOL) {
-        var html = [];
+            function diffHTML(diffText, insEOL, delEOL, equEOL) {
+                var html = [];
 
-        for (var x = 0; x < diffText.length; x++) {
-          var oper = diffText[x][0]; // operation: insert, delete or equal
-          var data = diffText[x][1]; // text of operation
-          var text = data
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;");
+                for (var x = 0; x < diffText.length; x++) {
+                    var oper = diffText[x][0]; // operation: insert, delete or equal
+                    var data = diffText[x][1]; // text of operation
+                    var text = data
+                        .replace(/&/g, "&amp;")
+                        .replace(/</g, "&lt;")
+                        .replace(/>/g, "&gt;");
 
-          switch (oper) {
-            case DIFF_INSERT:
-              html[x] =
-                "<ins class='" + mode + "'>" + text.replace(/\n/g, insEOL) + "</ins>";
-              break;
-            case DIFF_DELETE:
-              html[x] =
-                "<del class='" + mode + "'>" + text.replace(/\n/g, delEOL) + "</del>";
-              break;
-            case DIFF_EQUAL:
-              html[x] = "<span>" + text.replace(/\n/g, equEOL) + "</span>";
-              break;
-          }
-        }
+                    switch (oper) {
+                        case DIFF_INSERT:
+                            html[x] =
+                                "<ins class='" +
+                                mode +
+                                "'>" +
+                                text.replace(/\n/g, insEOL) +
+                                "</ins>";
+                            break;
+                        case DIFF_DELETE:
+                            html[x] =
+                                "<del class='" +
+                                mode +
+                                "'>" +
+                                text.replace(/\n/g, delEOL) +
+                                "</del>";
+                            break;
+                        case DIFF_EQUAL:
+                            html[x] =
+                                "<span>" + text.replace(/\n/g, equEOL) + "</span>";
+                            break;
+                    }
+                }
 
-        return html.join("");
-      }
+                return html.join("");
+            }
 
-      function swapText() {
-        var tmp = text1.value;
-        text1.value = text2.value;
-        text2.value = tmp;
-        text2.onchange(); // trigger the refresh
-      }
+            function swapText() {
+                var tmp = text1.value;
+                text1.value = text2.value;
+                text2.value = tmp;
+                text2.onchange(); // trigger the refresh
+            }
 
-      function switchMode() {
-        mode = mode === "line" ? "char" : "line";
-        text1.onkeyup =
-          text2.onkeyup =
-          text1.onpaste =
-          text2.onpaste =
-          text1.onchange =
-          text2.onchange =
-            mode === "line" ? diffLine : diffChar;
-        text2.onchange(); // trigger the refresh
-      }
-    </script>
-  </body>
+            function switchMode() {
+                mode = mode === "line" ? "char" : "line";
+                text1.onkeyup =
+                    text2.onkeyup =
+                    text1.onpaste =
+                    text2.onpaste =
+                    text1.onchange =
+                    text2.onchange =
+                        mode === "line" ? diffLine : diffChar;
+                text2.onchange(); // trigger the refresh
+            }
+        </script>
+    </body>
 </html>

@@ -4,35 +4,35 @@
  */
 
 body {
-  color: #444;
-  font-family: "Roboto Mono", monospace;
-  font-size: 13px;
-  margin-right: 13px;
-  max-width: 100%;
+    color: #444;
+    font-family: "Roboto Mono", monospace;
+    font-size: 13px;
+    margin-right: 13px;
+    max-width: 100%;
 }
 
 textarea {
-  color: #444;
-  font-family: "Roboto Mono", monospace;
-  font-size: 13px;
-  height: 25vh;
-  overflow: auto;
-  resize: none;
-  width: 100%;
+    color: #444;
+    font-family: "Roboto Mono", monospace;
+    font-size: 13px;
+    height: 25vh;
+    overflow: auto;
+    resize: none;
+    width: 100%;
 }
 
 div {
-  color: black;
-  font-family: "Roboto Mono", monospace;
-  font-size: 13px;
-  margin-top: 5px;
-  white-space: pre;
+    color: black;
+    font-family: "Roboto Mono", monospace;
+    font-size: 13px;
+    margin-top: 5px;
+    white-space: pre;
 }
 
 .tag {
-  color: #bd2848;
+    color: #bd2848;
 }
 
 .tagname {
-  color: blue;
+    color: blue;
 }

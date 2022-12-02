@@ -4,10 +4,10 @@
  */
 
 body {
-  color: #444;
-  font-family: "Roboto Mono", monospace;
-  font-size: 13px;
-  margin-right: 13px;
-  max-width: 100%;
-  white-space: pre;
+    color: #444;
+    font-family: "Roboto Mono", monospace;
+    font-size: 13px;
+    margin-right: 13px;
+    max-width: 100%;
+    white-space: pre;
 }
