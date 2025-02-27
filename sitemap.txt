@@ -1,5 +1,0 @@
-https://vale.re/
-https://vale.re/current-time.html
-https://vale.re/diff-text.html
-https://vale.re/format-xml.html
-https://vale.re/index.html
