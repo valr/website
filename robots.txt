@@ -1,6 +1,7 @@
 User-Agent: *
 Disallow: /files/
 Disallow: /private/
+Disallow: /banme.txt
 Allow: *
 
 SITEMAP: https://vale.re/sitemap.txt
