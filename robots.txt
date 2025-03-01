@@ -1,5 +1,3 @@
 User-Agent: *
-Disallow: /files/
-Disallow: /private/
 Disallow: /banme.txt
-Allow: *
+Allow: /
