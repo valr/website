@@ -12,15 +12,11 @@ indent_size = 4
 indent_style = space
 indent_size = 4
 
-[*.css]
-indent_style = space
-indent_size = 2
-
 [*.go]
 indent_style = tab
 indent_size = 4
 
-[*.html]
+[*.{htm,html,css,js,mjs,cjs}]
 indent_style = space
 indent_size = 2
 
@@ -28,14 +24,14 @@ indent_size = 2
 indent_style = space
 indent_size = 4
 
-[*.js]
-indent_style = space
-indent_size = 2
-
 [*.py]
 indent_style = space
 indent_size = 4
 
-[*.sh]
+[*.{sh,bash}]
+indent_style = space
+indent_size = 2
+
+[*.{xml,xsd,dtd,xsl,xslt}]
 indent_style = space
 indent_size = 2
