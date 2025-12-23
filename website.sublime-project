@@ -7,8 +7,8 @@
     "settings": {
         "lsp_format_on_save": true,
         "lsp_code_actions_on_save": {
-            "source.fixAll.eslint": true,
+            "source.fixAll": true,
             "source.organizeImports": true,
-        },
+        }
     }
 }
