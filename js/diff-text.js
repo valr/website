@@ -4,6 +4,10 @@ diffProcess.Diff_Timeout = 0; // no timeout
 var text1 = document.getElementById("text1");
 var text2 = document.getElementById("text2");
 var text3 = document.getElementById("text3");
+var separator = document.getElementById("separator");
+
+text3.addEventListener("dblclick", switchMode);
+separator.addEventListener("dblclick", swapText);
 
 var mode = "line";
 switchMode();

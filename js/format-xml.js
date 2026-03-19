@@ -3,6 +3,7 @@ var text1 = document.getElementById("text1");
 var text2 = document.getElementById("text2");
 
 text1.onkeyup = text1.onpaste = text1.onchange = FormatToXML;
+
 text2.addEventListener("dblclick", switchMode);
 
 function FormatToXML() {
